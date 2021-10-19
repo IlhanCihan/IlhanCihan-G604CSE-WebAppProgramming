@@ -1,0 +1,37 @@
+
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    box-sizing: border-box;
+}
+
+.header{
+    text-align: center;
+}
+
+.signInContainer {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.column {
+    background-color: burlywood;
+    min-height: 300px;
+    max-height: 100%;
+    width: 450px;
+    box-shadow: rgba(0,0,0, 0.1) 0 1px 2px;
+    padding: 20px 35px;
+    overflow-y: auto;
+}
+.submitButton {
+    align-items: center;
+    text-align: end;
+}
