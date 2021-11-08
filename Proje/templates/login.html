@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/login.css">
 </head>
 
@@ -26,6 +27,11 @@
                                 <!-- <img src="assets/images/logo.svg" alt="logo" class="logo"> -->
                             </div>
                             <p class="login-card-description">Sign into your account</p>
+                            {% for item in msg %}
+                            <div class="alert alert-success" role="alert">
+                                {{ item }}
+                            </div>
+                            {% endfor %}
                             <form method="POST">
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Username</label>
@@ -39,7 +45,7 @@
                                 <input name="submitButton" id="login" class="btn btn-block login-btn mb-4" type="submit"
                                     value="Login" required>
                             </form>
-                            <p class="login-card-footer-text">Don't have an account? <a href="register.html"
+                            <p class="login-card-footer-text">Don't have an account? <a href="/register"
                                     class="text-reset">Register here</a></p>
                             <nav class="login-card-footer-nav">
                                 <a href="#!">Terms of use.</a>
@@ -52,5 +58,7 @@
         </div>
     </main>
 </body>
-
+{% if login %}
+<script>$(document).ready(function () {window.setTimeout(function () {location.href = "/"}, 1000)})</script>
+{% endif %}
 </html>

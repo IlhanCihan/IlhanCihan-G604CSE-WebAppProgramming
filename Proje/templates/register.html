@@ -26,22 +26,22 @@
                 <h4 class="card-title mt-3 text-center">Create Account</h4>
                 <p class="text-center">Get started with your account</p>
 
+                {% for item in msg %}
+                <div class="alert alert-danger" role="alert">
+                    {{ item }}
+                </div>
+                {% endfor %}
+
                 <p class="divider-text">
                 </p>
-                <form method="POST">
+                <form method="POST" action="{{ url_for('register') }}">
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="firstName" class="form-control" placeholder="First Name" type="text" required>
+                        <input name="name" class="form-control" placeholder="Full Name" type="text" required>
                     </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                        <input name="lastName" class="form-control" placeholder="Last name" type="text" required>
-                    </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -54,13 +54,13 @@
                         </div>
                         <input name="email" class="form-control" placeholder="Email address" type="email" required>
                     </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="email2" class="form-control" placeholder="Confirm email address" type="email"
-                            required>
-                    </div>
+<!--                    <div class="form-group input-group">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>-->
+<!--                        </div>-->
+<!--                        <input name="email2" class="form-control" placeholder="Confirm email address" type="email"-->
+<!--                            required>-->
+<!--                    </div>-->
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
@@ -68,18 +68,18 @@
                         <input name="password" class="form-control" placeholder="Create password" type="password"
                             required>
                     </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                        </div>
-                        <input name="passwo`rd2" class="form-control" placeholder="Repeat password" type="password"
-                            required>
-                    </div> <!-- form-group// -->
+<!--                    <div class="form-group input-group">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>-->
+<!--                        </div>-->
+<!--                        <input name="password2" class="form-control" placeholder="Repeat password" type="password"-->
+<!--                            required>-->
+<!--                    </div> &lt;!&ndash; form-group// &ndash;&gt;-->
                     <div class="form-group">
                         <button name="submitButton" type="submit" class="btn btn-primary btn-block"> Create Account
                         </button>
                     </div> <!-- form-group// -->
-                    <p class="text-center">Have an account? <a href="login.html">Log In</a> </p>
+                    <p class="text-center">Have an account? <a href="/login">Log In</a> </p>
                 </form>
             </article>
         </div> <!-- card.// -->
@@ -98,5 +98,7 @@
     </footer>
 
 </body>
-
+{% if registered %}
+<script>$(document).ready(function () {window.setTimeout(function () {location.href = "/login"}, 1000)})</script>
+{% endif %}
 </html>
