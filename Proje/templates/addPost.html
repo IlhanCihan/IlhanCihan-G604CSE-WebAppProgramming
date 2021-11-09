@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+{% extends "index.html"%}
+{% block content%}
+
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+    <div class="col-12">
+        <h1 class="text-center">Add Post</h1>
+        <form action="" method="post">
+            <div class="form-group">
+                <input type="text" name="title" class="form-control" placeholder="Enter title">
+            </div>
+            <div class="form-group">
+                <input type="text" name="shortdescription" class="form-control" placeholder="Enter short description">
+            </div>
+
+            <div class="form-group">
+
+                <textarea rows="14" cols="50" name="description" class="form-control"
+                          placeholder="Enter text here..."> </textarea>
+            </div>
+            <br>
+            <p class="text-center"> Tags:</p>
+            <div class="form-group text-center" style="padding-right:15%">
+                <label class="radio-inline"><input type="radio" name="optradio" checked> Mathematics   </label>
+                <label class="radio-inline"><input type="radio" name="optradio"> Physics </label>
+                <label class="radio-inline"><input type="radio" name="optradio">Computer Science  </label>
+                <label class="radio-inline"><input type="radio" name="optradio">Art  </label>
+                <label class="radio-inline"><input type="radio" name="optradio">Advanced software programming  </label>
+                <label class="radio-inline"><input type="radio" name="optradio"> Other  </label>
+            </div>
+            <button type="submit" class="btn btn-primary  btn-block mb-3 text-center">Add</button>
+        </form>
+    </div>
+        </div>
+    </main>
+{% endblock%}
+
+</body>
+</html>

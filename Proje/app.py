@@ -21,10 +21,10 @@ def register():
         registered = False
         if request.method == 'POST':
             with sql.connect("database.db") as con:
-                conn = con.cursor()
-                conn.execute(
+                cur = con.cursor()
+                cur.execute(
                     "select * from users where username=?", (str(request.form['username']),))
-            username_exists = conn.fetchall()
+            username_exists = cur.fetchall()
 
             try:
                 if username_exists:
@@ -64,7 +64,7 @@ def login():
 
                 row = cur.fetchone()
                 if row is None:
-                    msg.append('Username or password is incorrect!')
+                    msg.append('Error')
 
                 else:
                     msg.append('Logged in successfully!')
@@ -78,6 +78,28 @@ def login():
     else:
         return redirect("/")
 
+
+@app.route('/addPost', methods=['GET', 'POST'])
+def add():
+    if request.method == 'POST':
+        user_id = session['user']
+
+        # with sql.connect("database.db") as con:
+
+
+        #  new_post = []
+        #
+        #  con.session.add(new_post)
+        # con.session.commit()
+        return redirect(url_for('home'))
+    else:
+
+        return render_template('addPost.html')
+
+
+@app.route('/follower')
+def follower():
+    return render_template('followers.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
