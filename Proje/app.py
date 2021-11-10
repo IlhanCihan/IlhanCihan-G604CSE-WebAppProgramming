@@ -10,7 +10,11 @@ def index():
     if 'logged_in' not in session:
         return redirect("/login")
     else:
-        return render_template('index.html')
+        with sql.connect("database.db") as con:
+            cur = con.cursor()
+            cur.execute("select * from posts")
+        posts = cur.fetchall()
+        return render_template('index.html', posts=posts)
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -82,24 +86,29 @@ def login():
 @app.route('/addPost', methods=['GET', 'POST'])
 def add():
     if request.method == 'POST':
-        user_id = session['user']
+        with sql.connect("database.db") as con:
+            cur = con.cursor()
+            cur.execute(
+                "INSERT INTO posts (title, description, content, tag, username) VALUES(?, ?, ?, ?,?)",
+                (request.form["title"], request.form["description"], request.form["content"], request.form["tag"], session["username"]))
+            con.commit()
 
-        # with sql.connect("database.db") as con:
-
-
-        #  new_post = []
-        #
-        #  con.session.add(new_post)
-        # con.session.commit()
-        return redirect(url_for('home'))
+        return redirect("/")
     else:
 
         return render_template('addPost.html')
 
 
-@app.route('/follower')
+@app.route('/followers')
 def follower():
-    return render_template('followers.html')
+    if 'logged_in' not in session:
+        return redirect("/login")
+    else:
+        with sql.connect("database.db") as con:
+            cur = con.cursor()
+            cur.execute("select * from users")
+        users = cur.fetchall()
+        return render_template('followers.html', users=users)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -5,9 +5,93 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Social students</title>
 </head>
 <body>
-<p>Your followers will be shown here hopefully soon</p>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <ul class="nav navbar-nav" >
+        <li>
+            <a href="/">
+
+                <div class="icon">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                </div>
+                <div class="name"><span data-text="Home">Home</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="/addPost">
+                <div class="icon">
+                    <i class="fa fa-file" aria-hidden="true"></i><!-- this is file icon link get form fornt-awesome icon for about -->
+                    <i class="fa fa-file" aria-hidden="true"></i><!-- copy and paste the file icon link here for hover effect -->
+                </div>
+                <div class="name"><span data-text="About">Add post</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="/followers">
+                <div class="icon">
+                    <i class="fa fa-users" aria-hidden="true"></i>>
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                </div>
+                <div class="name"><span data-text="Team">Other user friends</span></div>
+            </a>
+        </li>
+    </ul>
+
+</nav>
+
+<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="container">
+        {% for user in users %}
+        <div>
+            <h1>{{user[1]}}</h1>
+            <h2>@{{user[4]}}</h2>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+
 </body>
 </html>
+
+<style>
+    ul li a .icon {
+        width: 40px; /* changing the width of the icon */
+        height: 40px; /* changing the height of the icon */
+        text-align: center;
+
+        overflow: hidden;
+        margin: 0 auto 10px;
+    }
+    ul li a .icon .fa{
+        width: 100%;
+        height: 100%;
+        line-height: 40px;
+        font-size: 34px;
+        transition: 0.5s; /* adding the transition to make it more attractive */
+        color: whitesmoke;
+    }
+
+    ul li a .name span{
+        display: block;
+        position: relative;
+        color: whitesmoke;
+        font-size: 18px; /* changing font size */
+        line-height: 20px;
+        transition: 0.5s; /* adding the transition to make it more attractive */
+
+    }
+</style>

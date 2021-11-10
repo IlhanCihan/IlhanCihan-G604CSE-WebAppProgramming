@@ -12,34 +12,87 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Social students</title>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <ul class="nav navbar-nav" >
-        <li class="nav-item">
+        <li>
+            <a href="/">
 
-            <a class="nav-link" href="/">&nbsp &nbsp &nbsp &nbsp &nbsp
-                <span class="glyphicon glyphicon-home"></span> <br>&nbsp &nbsp &nbsp &nbsp Home</a>
+                <div class="icon">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                </div>
+                <div class="name"><span data-text="Home">Home</span></div>
+            </a>
         </li>
-        <li class="nav-item">
+        <li>
+            <a href="/addPost">
+                <div class="icon">
+                    <i class="fa fa-file" aria-hidden="true"></i><!-- this is file icon link get form fornt-awesome icon for about -->
+                    <i class="fa fa-file" aria-hidden="true"></i><!-- copy and paste the file icon link here for hover effect -->
+                </div>
+                <div class="name"><span data-text="About">Add post</span></div>
+            </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/addPost"> &nbsp &nbsp &nbsp &nbsp &nbsp <span
-                    class="glyphicon glyphicon-plus"></span> <br>&nbsp &nbsp &nbsp &nbsp Add</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/follower"> &nbsp &nbsp &nbsp &nbsp &nbsp<span
-                    class=" glyphicon glyphicon-user"></span> <br>&nbsp My network</a>
+        <li>
+            <a href="/followers">
+                <div class="icon">
+                    <i class="fa fa-users" aria-hidden="true"></i>>
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                </div>
+                <div class="name"><span data-text="Team">Other user friends</span></div>
+            </a>
         </li>
     </ul>
 
 </nav>
-
+<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
 <!--To post your content-->
-<div class="content">
-    {% block content%} {% endblock%}
+<div class="container">
+    {% for post in posts %}
+    <div>
+        <h1>{{post[1]}}</h1>
+        <h2>@{{post[5]}}</h2>
+        <p>{{post[3]}}</p>
+        <hr>
+    </div>
+    {% endfor %}
 </div>
+</main>
 </body>
+
 </html>
+
+<!--usually better when its on css file-->
+<style>
+    ul li a .icon {
+        width: 40px; /* changing the width of the icon */
+        height: 40px; /* changing the height of the icon */
+        text-align: center;
+
+        overflow: hidden;
+        margin: 0 auto 10px;
+    }
+    ul li a .icon .fa{
+        width: 100%;
+        height: 100%;
+        line-height: 40px;
+        font-size: 34px;
+        transition: 0.5s; /* adding the transition to make it more attractive */
+        color: whitesmoke;
+    }
+
+    ul li a .name span{
+        display: block;
+        position: relative;
+        color: whitesmoke;
+        font-size: 18px; /* changing font size */
+        line-height: 20px;
+        transition: 0.5s; /* adding the transition to make it more attractive */
+
+    }
+</style>
