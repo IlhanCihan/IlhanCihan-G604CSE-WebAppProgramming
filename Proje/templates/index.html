@@ -32,8 +32,8 @@
         <li>
             <a href="/addPost">
                 <div class="icon">
-                    <i class="fa fa-file" aria-hidden="true"></i><!-- this is file icon link get form fornt-awesome icon for about -->
-                    <i class="fa fa-file" aria-hidden="true"></i><!-- copy and paste the file icon link here for hover effect -->
+                    <i class="fa fa-file" aria-hidden="true"></i>
+                    <i class="fa fa-file" aria-hidden="true"></i>
                 </div>
                 <div class="name"><span data-text="About">Add post</span></div>
             </a>
@@ -56,8 +56,10 @@
     {% for post in posts %}
     <div>
         <h1>{{post[1]}}</h1>
-        <h2>@{{post[5]}}</h2>
+        <h6>@{{post[5]}}</h6>
+        <h3>{{post[2]}}</h3>
         <p>{{post[3]}}</p>
+        <p style="color: darkslategray">Topic: {{post[4]}}</p>
         <hr>
     </div>
     {% endfor %}
@@ -70,8 +72,8 @@
 <!--usually better when its on css file-->
 <style>
     ul li a .icon {
-        width: 40px; /* changing the width of the icon */
-        height: 40px; /* changing the height of the icon */
+        width: 40px;
+        height: 40px;
         text-align: center;
 
         overflow: hidden;
@@ -82,7 +84,7 @@
         height: 100%;
         line-height: 40px;
         font-size: 34px;
-        transition: 0.5s; /* adding the transition to make it more attractive */
+        transition: 0.5s;
         color: whitesmoke;
     }
 
@@ -90,9 +92,9 @@
         display: block;
         position: relative;
         color: whitesmoke;
-        font-size: 18px; /* changing font size */
+        font-size: 18px;
         line-height: 20px;
-        transition: 0.5s; /* adding the transition to make it more attractive */
+        transition: 0.5s;
 
     }
 </style>
